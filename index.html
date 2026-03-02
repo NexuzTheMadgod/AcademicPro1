@@ -1,1 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcademicPro | Excellence in Verified Assessment</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <header>
+        <div class="logo" onclick="navigateTo('home')">
+            <i class="fas fa-certificate"></i> AcademicPro
+        </div>
+        <nav class="nav-items">
+            <a href="javascript:void(0)" onclick="navigateTo('home')">Overview</a>
+            <a href="#courses">Curriculum</a>
+            <a href="#assessment">Verification</a>
+            <a href="#" class="btn btn-primary btn-nav">Institution Portal</a>
+        </nav>
+    </header>
+
+    <div id="mainView" class="view-pane active-view">
+        <section class="hero">
+            <span class="badge">Trusted by 200+ Global Institutions</span>
+            <h1>The Gold Standard in<br><span class="text-primary">Academic Integrity.</span></h1>
+            <p>Deploy secure, proctored examinations with AI-driven verification and instant certification across 40+ specialized disciplines.</p>
+            <div class="hero-btns">
+                <a href="#courses" class="btn btn-primary">Explore Faculty Catalog</a>
+                <a href="#assessment" class="btn btn-outline">Live Proctoring Demo</a>
+            </div>
+        </section>
+
+        <section class="trusted">
+            <p class="trusted-label">Accreditation Partners</p>
+            <div class="trusted-logos">
+                <i class="fas fa-university"></i>
+                <i class="fas fa-school"></i>
+                <i class="fas fa-landmark"></i>
+                <i class="fas fa-award"></i>
+                <i class="fas fa-book-open"></i>
+            </div>
+        </section>
+
+        <section class="courses-section" id="courses">
+            <div class="section-header">
+                <h2>The Course Registry</h2>
+                <p>Select a discipline to explore available certifications and diagnostic assessments validated by industry experts.</p>
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" placeholder="Search faculty (e.g. Mathematics)..." class="search-input">
+                </div>
+            </div>
+            <div class="course-grid" id="courseGrid">
+                </div>
+        </section>
+
+        <section class="assessment-section" id="assessment">
+            <div class="section-header">
+                <h2>Secure Candidate Interface</h2>
+                <p>Every assessment is delivered through an encrypted, distraction-free environment with continuous biometric monitoring.</p>
+            </div>
+            <div class="exam-window">
+                <div class="exam-header">
+                    <div class="status-container">
+                        <div class="status-dot"></div>
+                        <span class="status-text">VERIFICATION ACTIVE</span>
+                    </div>
+                    <div class="timer">44:59:02</div>
+                </div>
+                <div class="exam-body">
+                    <span class="exam-label">Mathematics 401 | Calculus</span>
+                    <h3 class="exam-question">Evaluate the integral $\int x \cos(x) \, dx$ using integration by parts.</h3>
+                    <div class="option" onclick="this.classList.toggle('selected')">x \sin(x) + \cos(x) + C</div>
+                    <div class="option" onclick="this.classList.toggle('selected')">x \sin(x) - \cos(x) + C</div>
+                    <div class="option" onclick="this.classList.toggle('selected')">-x \cos(x) + \sin(x) + C</div>
+                    <button class="btn btn-primary btn-full" onclick="alert('Demo responses logged to encrypted ledger.')">Submit for Verification</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="mathHubView" class="view-pane">
+        <div class="hub-header">
+            <div class="container-max">
+                <button class="btn btn-outline btn-sm" onclick="navigateTo('home')">
+                    <i class="fas fa-arrow-left"></i> Return to Registry
+                </button>
+                <h1 class="hub-title">Faculty of Mathematics</h1>
+                <p class="hub-subtitle">Explore high-stakes certification tracks covering pure mathematics, computational theory, and advanced statistics.</p>
+            </div>
+        </div>
+        
+        <div class="hub-content">
+            <div class="hub-grid">
+                <div>
+                    <h3 class="track-title">Active Certification Tracks</h3>
+                    <div class="course-card" onclick="startExam()">
+                        <div class="card-flex">
+                            <div>
+                                <h4 class="card-title-lg">Theoretical Algebra Diagnostics</h4>
+                                <p class="card-meta">Level: Graduate • 10 Modules • AI-Proctored</p>
+                            </div>
+                            <i class="fas fa-chevron-right arrow-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="integrity-card">
+                    <i class="fas fa-shield-halved integrity-icon"></i>
+                    <h4>Integrity Pledge</h4>
+                    <p>By entering this assessment, you agree to the AcademicPro standards of conduct and biometric monitoring protocols.</p>
+                    <button class="btn btn-primary btn-full" onclick="startExam()">Launch Assessment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="exam-modal" id="examModal">
+        <div class="modal-header">
+            <div class="modal-status">
+                <i class="fas fa-lock text-primary"></i>
+                <span id="progress" class="progress-text">Session Active: Q1/2</span>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="closeExam()">Terminate Session</button>
+        </div>
+        <div class="modal-content" id="modalContent"></div>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="logo logo-white"><i class="fas fa-certificate"></i> AcademicPro</div>
+                <p class="footer-desc">Empowering the next generation of verified scholars through iron-clad digital assessment ecosystems.</p>
+            </div>
+            <div>
+                <h5>Discipline</h5>
+                <p class="footer-link">Mathematics</p>
+                <p class="footer-link">Quantum Physics</p>
+                <p class="footer-link">Bio-Chemistry</p>
+            </div>
+            <div>
+                <h5>Legal</h5>
+                <p class="footer-link">Privacy Policy</p>
+                <p class="footer-link">Ethics Standards</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 AcademicPro International. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+  </html>
